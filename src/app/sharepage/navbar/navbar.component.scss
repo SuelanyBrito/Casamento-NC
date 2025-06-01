@@ -1,0 +1,26 @@
+.navbar{
+  background: transparent;
+}
+
+.nav-link{
+  color: #956d48;
+  font-family: 'Glacialfont', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #152101; /* Cor de destaque ao passar o mouse */
+}
+
+.nav-item {
+  padding-right: 2rem;
+}
+
+.navbar-brand {
+  font-family: 'Myfont', 'sans-serif';
+}
+
+.navbar-light .navbar-nav .nav-link.active-link{
+  color: rgba(10, 60, 19, 0.5);
+}

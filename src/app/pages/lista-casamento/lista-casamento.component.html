@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+<div class="list-gifts py-5">
+  <div class="initial">
+    <div class="title">
+      <h1 class="mobile-text">Lista de Presentes</h1>
+    </div>
+    <div class="text">
+      <h5>Criamos este espaço para oferecer listas de presentes justas e variadas, facilitando a escolha para quem deseja nos presentear.</h5>
+      <p class="att">Com carinho, Samuel e Mariana</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row" style="justify-content: center;">
+      <div class="card col-3">
+        <a href="https://www.amazon.com.br/hz/wishlist/ls/9TXC9ZGOG62C?ref_=wl_share" target="_blank">
+          <div class="circle">
+            <img class="ltsPresente imgPresente" src="assets/img/home/listaPresente/amazon.png" alt="">
+          </div>
+          <div class="content">
+            <p>Indicado para quem tem a assinatura Amazon Prime e, portanto, consegue enviar o presente com frete gratis e sem estresse.</p>
+            <a href="https://www.amazon.com.br/hz/wishlist/ls/9TXC9ZGOG62C?ref_=wl_share" target="_blank">Dar uma olhadinha</a>
+          </div>
+        </a>
+      </div>
+
+      <div class="card col-3">
+        <a href="https://www.querodecasamento.com.br/lista-de-casamento/Mariana-AnthonySamuel" target="_blank">
+          <div class="circle">
+            <img class="ltsPresente imgPresente" src="assets/img/home/listaPresente/magalu.png" alt="">
+          </div>
+          <div class="content">
+            <p>Uma loja com muitas opções de presentes e também com entrega facil, rápida e parcelamento sem juros.</p>
+            <a href="https://www.querodecasamento.com.br/lista-de-casamento/Mariana-AnthonySamuel" target="_blank">Dar uma olhadinha</a>
+          </div>
+        </a>
+      </div>
+
+      <div class="card col-3">
+        <a href="/general-list">
+          <div class="circle">
+            <img class="list-general" src="assets/img/home/listaPresente/listaIcone.png" alt="">
+          </div>
+          <div class="content">
+            <p>Criamos uma lista variada de presentes que podem ser comprados em outras lojas de sua preferência.</p>
+            <a href="/general-list">Dar uma olhadinha</a>
+          </div>
+        </a>
+      </div>
+
+      <div class="card col-3">
+        <a href="#" class="link-menu" data-bs-toggle="modal" data-bs-target="#pix">
+          <div class="circle">
+            <img class="list-general" src="assets/img/home/listaPresente/pix.png" alt="">
+          </div>
+          <div class="content">
+            <p>Caso queria nos presentear com algum valor em Pix</p>
+            <a href="/pix">Clique aqui</a>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Modal PIX -->
+  <div class="modal fade" id="pix" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header modalH">
+          <h5 class="modal-title text-center" id="exampleModalLabel">QrCode</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-qrcode">
+          <img src="assets\img\pix-samuel-mariana.jpg" class="card-img-top imgModal" alt="...">
+          <button type="button" class="button-copy btn btn-success" data-bs-dismiss="modal" (click)="copyPixKey()">Copiar</button>
+        </div>
+      </div>
+    </div>
+  </div>

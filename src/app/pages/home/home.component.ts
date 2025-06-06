@@ -1,8 +1,19 @@
 import { Component, ElementRef, OnInit, ViewChild,  AfterViewInit } from '@angular/core';
+import {ClipboardModule} from "ngx-clipboard";
+import {MatCard, MatCardContent} from "@angular/material/card";
+import {NgbCarousel} from "@ng-bootstrap/ng-bootstrap";
+import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  imports: [
+    ClipboardModule,
+    MatCardContent,
+    MatCard,
+    NgbCarousel,
+    NgClass
+  ],
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements AfterViewInit {

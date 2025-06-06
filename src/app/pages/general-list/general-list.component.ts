@@ -2,13 +2,16 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { BackService } from 'src/app/services/backService';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {MatTableDataSource} from "@angular/material/table";
-import { MatCheckboxChange } from '@angular/material/checkbox';
-import { MatSelectChange } from '@angular/material/select';
+import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable, MatTableDataSource} from "@angular/material/table";
+import {MatCheckbox, MatCheckboxChange} from '@angular/material/checkbox';
+import {MatFormField, MatLabel, MatOption, MatSelect, MatSelectChange} from '@angular/material/select';
 import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import { DialogComponent } from 'src/app/sharepage/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import {NgForOf, NgIf, NgStyle} from "@angular/common";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {NavbarComponent} from "../../sharepage/navbar/navbar.component";
 
 interface Item {
   id: string;
@@ -25,6 +28,26 @@ interface SelectedItem {
 @Component({
   selector: 'app-general-list',
   templateUrl: './general-list.component.html',
+  imports: [
+    MatSelect,
+    MatLabel,
+    MatFormField,
+    MatOption,
+    FormsModule,
+    NgForOf,
+    MatPaginator,
+    MatProgressSpinner,
+    MatHeaderRow,
+    MatRow,
+    MatHeaderCell,
+    MatCell,
+    MatCheckbox,
+    ReactiveFormsModule,
+    NgStyle,
+    NavbarComponent,
+    MatTable,
+    NgIf
+  ],
   styleUrls: ['./general-list.component.scss']
 })
 export class GeneralListComponent implements OnInit, AfterViewInit {

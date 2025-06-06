@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ClipboardModule } from 'ngx-clipboard';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './sharepage/navbar/navbar.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -12,8 +12,8 @@ import { NgOptimizedImage } from '@angular/common';
 import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
 import { ListaCasamentoComponent } from './pages/lista-casamento/lista-casamento.component';
 import { graphqlProvider } from 'src/libs';
+// @ts-ignore
 import { Apollo, ApolloModule } from 'apollo-angular';
-import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -32,15 +32,7 @@ import {NgbCarouselModule, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent,
-    DialogComponent,
-    MenuComponent,
-    HomeComponent,
-    ThanksComponent,
-    GeneralListComponent,
-    ImageGalleryComponent,
-    ListaCasamentoComponent
+
   ],
   imports: [
     BrowserModule,
@@ -48,8 +40,6 @@ import {NgbCarouselModule, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
     ClipboardModule,
     AppRoutingModule,
     NgOptimizedImage,
-    HttpClientModule,
-    ApolloModule,
     IgxCarouselModule,
     IgxSliderModule,
     FormsModule,
@@ -67,11 +57,19 @@ import {NgbCarouselModule, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
     MatProgressSpinnerModule,
     MatCardImage,
     MatCardContent,
-    NgbSlide
+    NgbSlide,
+    GeneralListComponent,
+    ThanksComponent,
+    ImageGalleryComponent,
+    ListaCasamentoComponent,
+    HomeComponent,
+    MenuComponent,
+    DialogComponent,
+    NavbarComponent,
+    AppComponent
   ],
   providers: [
-    graphqlProvider,
-    Apollo
+    graphqlProvider
   ],
   bootstrap: [AppComponent]
 })

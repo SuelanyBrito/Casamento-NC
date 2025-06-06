@@ -1,9 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {BackService} from "../../services/backService";
+import {NavbarComponent} from "../../sharepage/navbar/navbar.component";
 
 @Component({
   selector: 'app-lista-casamento',
   templateUrl: './lista-casamento.component.html',
+  imports: [
+    NavbarComponent
+  ],
   styleUrls: ['./lista-casamento.component.scss']
 })
 export class ListaCasamentoComponent implements OnInit {

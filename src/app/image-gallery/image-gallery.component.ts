@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
+import {NgForOf, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-image-gallery',
   templateUrl: './image-gallery.component.html',
+  imports: [
+    NgForOf,
+    NgIf
+  ],
   styleUrls: ['./image-gallery.component.css']
 })
 export class ImageGalleryComponent {

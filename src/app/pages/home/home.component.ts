@@ -12,7 +12,6 @@ import {NgClass} from "@angular/common";
     MatCardContent,
     MatCard,
     NgbCarousel,
-    NgClass
   ],
   styleUrls: ['./home.component.scss']
 })

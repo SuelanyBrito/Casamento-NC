@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ClipboardModule } from 'ngx-clipboard';
-import { AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './sharepage/navbar/navbar.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -12,23 +11,21 @@ import { NgOptimizedImage } from '@angular/common';
 import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
 import { ListaCasamentoComponent } from './pages/lista-casamento/lista-casamento.component';
 import { graphqlProvider } from 'src/libs';
-// @ts-ignore
-import { Apollo, ApolloModule } from 'apollo-angular';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatButtonModule} from "@angular/material/button";
-import {MatTableModule} from "@angular/material/table";
-import {MatSelectModule} from "@angular/material/select";
-import {MatCheckbox} from "@angular/material/checkbox";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from "@angular/material/button";
+import { MatTableModule } from "@angular/material/table";
+import { MatSelectModule } from "@angular/material/select";
+import { MatCheckbox } from "@angular/material/checkbox";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from "@angular/material/input"
+import { MatInputModule } from "@angular/material/input"
 import { DialogComponent } from './sharepage/dialog/dialog.component';
-import {MatCard, MatCardContent, MatCardImage} from "@angular/material/card";
-import {IgxCarouselModule, IgxSliderModule} from "igniteui-angular";
-import {NgbCarouselModule, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
+import { MatCard } from "@angular/material/card";
+import { IgxCarouselModule, IgxSliderModule } from "igniteui-angular";
+import { NgbCarouselModule, NgbSlide } from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -38,7 +35,6 @@ import {NgbCarouselModule, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
     BrowserModule,
     NgbCarouselModule,
     ClipboardModule,
-    AppRoutingModule,
     NgOptimizedImage,
     IgxCarouselModule,
     IgxSliderModule,
@@ -55,8 +51,6 @@ import {NgbCarouselModule, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
     ReactiveFormsModule,
     MatCard,
     MatProgressSpinnerModule,
-    MatCardImage,
-    MatCardContent,
     NgbSlide,
     GeneralListComponent,
     ThanksComponent,
@@ -70,7 +64,6 @@ import {NgbCarouselModule, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
   ],
   providers: [
     graphqlProvider
-  ],
-  bootstrap: [AppComponent]
+  ]
 })
 export class AppModule { }

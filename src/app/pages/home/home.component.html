@@ -1,24 +1,84 @@
-<div class="home">
-  <div class="initial-page">
-    <div class="bg-image-card">
-      <div class="content-center">
-        <h1>Neto e Clara</h1>
-        <p class="invite">Convidam para celebrar a</p>
-        <p class="name">Festa da graça!</p>
-        <p class="date">04 Outubro, 2025 às 15:30</p>
-      </div>
-    </div>
+<!-- Parte 1 - Banner, Texto e Menu de Ícones -->
+<section class="top-section">
+  <div class="banner-container">
+    <img src="/assets/img/casal/principal.png" alt="Banner" class="banner-image" />
 
-    <div class="text">
-      <p class="verse">
-        “Ame o Senhor, o seu Deus, de todo o seu coração, <br>
-        de toda a sua alma e de todas as suas forças. <br>
-        Que todas estas palavras que hoje lhe ordeno estejam em seu coração.“
-      </p>
-      <p class="cap">Deuteronômio 6:5-6</p>
+    <div class="content-center">
+      <h1>Neto e Clara</h1>
+      <p class="invite">Convidam para celebrar a</p>
+      <p class="name">Festa da graça!</p>
+      <p class="date">04 Outubro, 2025 às 15:30</p>
     </div>
   </div>
-</div>
+
+  <div class="intro-text">
+    <p class="verse">
+            “Toda glória seja a Deus que, por seu grandioso poder que <br>
+            atua em nós, é capaz de realizar infinitamente mais que <br>
+            pedimos e pensamos.“
+    </p>
+    <p class="cap">Efésios 3:20</p>
+  </div>
+
+  <nav class="icon-menu">
+    <div class="icon-item">
+      <img src="assets/icon1.png" alt="Início" />
+      <p>Início</p>
+    </div>
+    <div class="icon-item">
+      <img src="assets/icon2.png" alt="Perfil" />
+      <p>Perfil</p>
+    </div>
+    <div class="icon-item">
+      <img src="assets/icon3.png" alt="Busca" />
+      <p>Busca</p>
+    </div>
+    <div class="icon-item">
+      <img src="assets/icon4.png" alt="Mensagens" />
+      <p>Mensagens</p>
+    </div>
+    <div class="icon-item">
+      <img src="assets/icon5.png" alt="Config" />
+      <p>Config</p>
+    </div>
+  </nav>
+</section>
+
+<!-- Parte 2 - Carrossel -->
+<section class="carousel-section">
+  <div class="carousel">
+    <img [src]="carouselImages[currentImage]" class="carousel-image" />
+    <div class="carousel-controls">
+      <button (click)="prevImage()">&#8592;</button>
+      <button (click)="nextImage()">&#8594;</button>
+    </div>
+  </div>
+  <p class="carousel-text">Explore nossas fotos e descubra mais.</p>
+</section>
+
+
+
+<!--<div class="home">-->
+<!--  <div class="initial-page">-->
+<!--    <div class="bg-image-card">-->
+<!--      <div class="content-center">-->
+<!--        <h1>Neto e Clara</h1>-->
+<!--        <p class="invite">Convidam para celebrar a</p>-->
+<!--        <p class="name">Festa da graça!</p>-->
+<!--        <p class="date">04 Outubro, 2025 às 15:30</p>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="text">-->
+<!--      <p class="verse">-->
+<!--        “Ame o Senhor, o seu Deus, de todo o seu coração, <br>-->
+<!--        de toda a sua alma e de todas as suas forças. <br>-->
+<!--        Que todas estas palavras que hoje lhe ordeno estejam em seu coração.“-->
+<!--      </p>-->
+<!--      <p class="cap">Deuteronômio 6:5-6</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 
 

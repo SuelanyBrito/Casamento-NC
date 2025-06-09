@@ -9,6 +9,11 @@
   src: url('assets/fonts/eb-garamond-2/EBGaramond.otf') format('truetype');
 }
 
+@font-face {
+  font-family: 'EBGaramondItalic';
+  src: url('assets/fonts/eb-garamond-2/EBGaramond-Italic.ttf') format('truetype');
+}
+
 *
 {
   padding: 0;

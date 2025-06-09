@@ -1,100 +1,278 @@
-.initial-page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+.top-section {
+  text-align: center;
 }
 
-.bg-image-card {
-  margin: 0 auto;
-  background-image: url(/assets/img/casal/principal.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  box-sizing: border-box;
-  aspect-ratio: 3 / 4;
-  width: 50%;
+.banner-container {
+  position: relative;
+  width: 100%;
+  max-height: 60vh;
+  overflow: hidden;
+}
+
+.banner-image {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  display: block;
 }
 
 .content-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   text-align: center;
   color: white;
+  padding: calc(1vh + 10px) calc(4vw + 10px);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  border-radius: 1rem;
-  width: 100%;
 }
 
-.content-center h1,
-.name {
-  font-size: 1.5rem;
+.content-center .name {
   font-family: Myfont, 'Helvetica', 'Arial', sans-serif;
-  margin: 0.5rem;
+  line-height: 1.2;
 }
 
-.invite,
-.date {
-  font-size: 0.5rem;
-  margin: 0;
+.content-center h1 {
+  font-family: Myfont, 'Helvetica', 'Arial', sans-serif;
+  font-size: calc(18px + 1vw);
+  line-height: 1.2;
+}
+
+.content-center .invite {
+  font-family: EBGaramond, 'Helvetica', 'Arial', sans-serif;
+  margin: 4px 0;
+  text-transform: uppercase;
+}
+
+.content-center .date {
+  font-family: EBGaramond, 'Helvetica', 'Arial', sans-serif;
+  margin: 4px 0;
+  line-height: 1.2;
+}
+
+.verse {
+  font-family: EBGaramondItalic, 'Helvetica', 'Arial', sans-serif;
+  text-shadow: 2px 2px 4px #ffffff;
+}
+
+.cap {
   font-family: EBGaramond, 'Helvetica', 'Arial', sans-serif;
   text-transform: uppercase;
 }
 
-.date {
-  border-top: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
-  padding-bottom: 1rem;
+/* Ajustes para telas menores */
+@media (max-width: 600px) {
+  .content-center {
+    padding: 12px 8px;
+  }
+
+  .content-center h1 {
+    font-size: 20px;
+  }
+
+  .content-center p {
+    font-size: 14px;
+  }
 }
 
-.name {
+/* Texto inicial */
+.intro-text {
+  margin-top: 1rem;
   font-size: 1rem;
+  color: #333;
+  max-height: 15vh;
 }
 
-.text {
-  text-align: center;
-  padding: 1rem;
+/* Menu de ícones */
+.icon-menu {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  padding: calc(1vh + 10px) calc(5vw);
+  flex-wrap: wrap;
+  gap: calc(1vw + 5px);
 }
 
-.verse {
-  font-style: italic;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+.icon-item {
+  text-align: center;
+  width: calc(20% - 10px);
 }
 
-.cap {
-  font-weight: bold;
+.icon-item img {
+  width: calc(100% - 10px);
+  max-width: 48px;
+  height: auto;
 }
-@media (min-width:801px) and (max-width: 1300px) {
-  .bg-image-card {
-    aspect-ratio: 1;
-    width: 25%;
+
+/* Seção do carrossel */
+.carousel-section {
+  margin-top: 40px;
+  text-align: center;
+  padding: 0 calc(4vw);
+}
+
+.carousel {
+  width: calc(100% - 20px);
+  max-width: 600px;
+  margin: auto;
+}
+
+.carousel-image {
+  width: 100%;
+  height: calc(30vh + 40px);
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.carousel-controls {
+  margin-top: 10px;
+}
+
+.carousel-controls button {
+  font-size: 24px;
+  padding: 8px 16px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.carousel-text {
+  margin-top: 20px;
+  font-size: calc(14px + 0.4vw);
+  color: #666;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .icon-item {
+    width: calc(25% - 10px);
+  }
+
+  .icon-item img {
+    max-width: 36px;
+  }
+
+  .carousel-image {
+    height: calc(25vh + 30px);
   }
 }
 
-@media (min-width:500px) and (max-width: 650px) {
-  .bg-image-card {
-    width: 46%;
+@media (max-width: 480px) {
+  .icon-item {
+    width: calc(33.33% - 10px);
   }
-}
-@media (max-width:499px) {
-  .bg-image-card {
-    width: 100%;
-  }
-}
 
-@media (min-width:651px) and (max-width: 800px) {
-  .bg-image-card {
-    width: 40%;
+  .icon-item img {
+    max-width: 28px;
+  }
+
+  .carousel-controls button {
+    font-size: 20px;
+    padding: 6px 12px;
+  }
+
+  .intro-text, .carousel-text {
+    font-size: 14px;
+  }
+
+  .banner-image {
+    max-height: 200px;
   }
 }
+//.initial-page {
+//  height: 100vh;
+//  display: flex;
+//  flex-direction: column;
+//}
+//
+//.bg-image-card {
+//  margin: 0 auto;
+//  background-image: url(/assets/img/casal/principal.png);
+//  background-size: cover;
+//  background-repeat: no-repeat;
+//  background-position: center;
+//  height: 100vh;
+//  display: flex;
+//  justify-content: center;
+//  align-items: flex-end;
+//  box-sizing: border-box;
+//  aspect-ratio: 3 / 4;
+//  width: 50%;
+//}
+//
+//.content-center {
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+//  text-align: center;
+//  color: white;
+//  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+//  border-radius: 1rem;
+//  width: 100%;
+//}
+//
+//.content-center h1,
+//.name {
+//  font-size: 1.5rem;
+//  font-family: Myfont, 'Helvetica', 'Arial', sans-serif;
+//  margin: 0.5rem;
+//}
+//
+//.invite,
+//.date {
+//  font-size: 0.5rem;
+//  margin: 0;
+//  font-family: EBGaramond, 'Helvetica', 'Arial', sans-serif;
+//  text-transform: uppercase;
+//}
+//
+//.date {
+//  border-top: 1px solid #ffffff;
+//  border-bottom: 1px solid #ffffff;
+//  padding-bottom: 1rem;
+//}
+//
+//.name {
+//  font-size: 1rem;
+//}
+//
+//.text {
+//  text-align: center;
+//  padding: 1rem;
+//  display: flex;
+//  flex-direction: column;
+//  justify-content: center;
+//}
+//
+//.verse {
+//  font-style: italic;
+//  font-size: 1.1rem;
+//  margin-bottom: 0.5rem;
+//}
+//
+//.cap {
+//  font-weight: bold;
+//}
+//@media (min-width:801px) and (max-width: 1300px) {
+//  .bg-image-card {
+//    aspect-ratio: 1;
+//    width: 25%;
+//  }
+//}
+//
+//@media (min-width:500px) and (max-width: 650px) {
+//  .bg-image-card {
+//    width: 46%;
+//  }
+//}
+//@media (max-width:499px) {
+//  .bg-image-card {
+//    width: 100%;
+//  }
+//}
+//
+//@media (min-width:651px) and (max-width: 800px) {
+//  .bg-image-card {
+//    width: 40%;
+//  }
+//}
 
 //
 //.slider {

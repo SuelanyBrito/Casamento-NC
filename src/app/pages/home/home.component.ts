@@ -42,6 +42,21 @@ export class HomeComponent implements AfterViewInit {
       window.scrollTo({ top: targetPosition + 200, behavior: 'smooth' });
     }
   }
+
+  carouselImages = [
+    'assets/carrossel1.jpg',
+    'assets/carrossel2.jpg',
+    'assets/carrossel3.jpg'
+  ];
+  currentImage = 0;
+
+  nextImage() {
+    this.currentImage = (this.currentImage + 1) % this.carouselImages.length;
+  }
+
+  prevImage() {
+    this.currentImage = (this.currentImage - 1 + this.carouselImages.length) % this.carouselImages.length;
+  }
 }
 
 

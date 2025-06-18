@@ -7,13 +7,17 @@
   width: 100%;
   max-height: 60vh;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .banner-image {
-  width: 100%;
+  width: 80%;
   max-height: 60vh;
-  object-fit: contain;
-  display: block;
+  object-fit: cover;
+  object-position: center;
+  display: flex;
+  justify-content: center;
 }
 
 .content-center {
@@ -85,15 +89,14 @@
 /* Menu de ícones */
 .icon-menu {
   display: flex;
-  justify-content: space-between;
-  padding: calc(1vh + 10px) calc(5vw);
+  justify-content: center;
+  margin-top: 2rem;
   flex-wrap: wrap;
-  gap: calc(1vw + 5px);
+  gap: 4rem;
 }
 
 .icon-item {
   text-align: center;
-  width: calc(20% - 10px);
 }
 
 .icon-item img {

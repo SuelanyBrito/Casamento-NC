@@ -26,6 +26,7 @@ import { DialogComponent } from './sharepage/dialog/dialog.component';
 import { MatCard } from "@angular/material/card";
 import { IgxCarouselModule, IgxSliderModule } from "igniteui-angular";
 import { NgbCarouselModule, NgbSlide } from "@ng-bootstrap/ng-bootstrap";
+import { LucideAngularModule, Heart, MapPinned } from 'lucide-angular';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { NgbCarouselModule, NgbSlide } from "@ng-bootstrap/ng-bootstrap";
     MenuComponent,
     DialogComponent,
     NavbarComponent,
-    AppComponent
+    AppComponent,
+    LucideAngularModule.pick({ Heart, MapPinned })
   ],
   providers: [
     graphqlProvider

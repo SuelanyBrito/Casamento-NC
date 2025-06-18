@@ -1,17 +1,13 @@
-import { Component, ElementRef, OnInit, ViewChild,  AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild,  AfterViewInit } from '@angular/core';
 import {ClipboardModule} from "ngx-clipboard";
-import {MatCard, MatCardContent} from "@angular/material/card";
-import {NgbCarousel} from "@ng-bootstrap/ng-bootstrap";
-import {NgClass} from "@angular/common";
+import {LucideAngularModule} from "lucide-angular";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   imports: [
     ClipboardModule,
-    MatCardContent,
-    MatCard,
-    NgbCarousel,
+    LucideAngularModule,
   ],
   styleUrls: ['./home.component.scss']
 })

@@ -6,8 +6,8 @@ import { environment } from './environments/environment';
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { graphqlProvider } from './libs';
-import { routes } from "./app/app.routes"; // seu provider customizado
-import { LucideAngularModule, Heart, MapPinned } from 'lucide-angular';
+import { routes } from "./app/app.routes";
+import { LucideAngularModule, Heart, MapPinned, CircleAlert, Gift } from 'lucide-angular';
 
 if (environment.production) {
   enableProdMode();
@@ -19,6 +19,6 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes),
     graphqlProvider,
     // Provide LucideAngularModule here
-    LucideAngularModule.pick({ Heart, MapPinned }).providers!
+    LucideAngularModule.pick({ Heart, MapPinned, CircleAlert, Gift }).providers!
   ]
 }).catch(err => console.error(err));

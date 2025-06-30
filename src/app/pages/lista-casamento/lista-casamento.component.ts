@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BackService} from "../../services/backService";
+// import {BackService} from "../../services/backService";
 import {NavbarComponent} from "../../sharepage/navbar/navbar.component";
 
 @Component({
@@ -13,21 +13,21 @@ import {NavbarComponent} from "../../sharepage/navbar/navbar.component";
 export class ListaCasamentoComponent implements OnInit {
 
 
-  constructor(private backService: BackService){}
+  // constructor(private backService: BackService){}
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
   }
 
-  copyPixKey() {
-    this.backService.getPix().subscribe(data => {
-      navigator.clipboard.writeText(data).then(() => {
-        alert('Chave PIX copiada com sucesso!');
-      }).catch(err => {
-        console.error('Erro ao copiar chave PIX: ', err);
-      });
-    })
+  // copyPixKey() {
+  //   this.backService.getPix().subscribe(data => {
+  //     navigator.clipboard.writeText(data).then(() => {
+  //       alert('Chave PIX copiada com sucesso!');
+  //     }).catch(err => {
+  //       console.error('Erro ao copiar chave PIX: ', err);
+  //     });
+  //   })
 
-  }
+  // }
 
 }

@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import { BackService } from 'src/app/services/backService';
+// import { BackService } from 'src/app/services/backService';
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable, MatTableDataSource} from "@angular/material/table";
@@ -61,7 +61,7 @@ export class GeneralListComponent implements OnInit, AfterViewInit {
   qtde_temp: number = 0;
   invalid_submit = true;
 
-  constructor(private fb: FormBuilder, private backService: BackService, private router: Router, public dialog: MatDialog) {
+  constructor(private fb: FormBuilder, private router: Router, public dialog: MatDialog) {
     this.form = this.fb.group({
       name_user: ['', Validators.required],
     });
@@ -103,7 +103,7 @@ export class GeneralListComponent implements OnInit, AfterViewInit {
 
   enviar() {
     if (this.form.invalid || this.selectedItems.length === 0) {
-      this.openDialog();
+      // this.openDialog();
     }else{
       const itemInitial: Item = {
         id: '',
@@ -116,36 +116,36 @@ export class GeneralListComponent implements OnInit, AfterViewInit {
         item: itemInitial,
         quantity: 0
       }
-      this.backService.update(selected, '')
-      this.selectedItems.map(itemX =>
-        this.backService.update(itemX, this.form.get('name_user')?.value)
-      );
+      // this.backService.update(selected, '')
+      // this.selectedItems.map(itemX =>
+      //   this.backService.update(itemX, this.form.get('name_user')?.value)
+      // );
       this.router.navigate(['/thanks']);
     }
   }
 
   loadList() {
-    this.backService.getList().subscribe((data: Item[]) => {
-      this.list = new MatTableDataSource<Item>(data);
-      this.list.paginator = this.paginator;
-      this.list.sort = this.sort;
-      this.list.sortingDataAccessor = (item, property) => {
-        switch (property) {
-          case 'title': return item.title;
-          case 'number': return item.number;
-          case 'id': return item.id;
-          case 'check': return item.check ? 1 : 0;
-          default: return '';
-        }
-      };
+    // this.backService.getList().subscribe((data: Item[]) => {
+    //   this.list = new MatTableDataSource<Item>(data);
+    //   this.list.paginator = this.paginator;
+    //   this.list.sort = this.sort;
+    //   this.list.sortingDataAccessor = (item, property) => {
+    //     switch (property) {
+    //       case 'title': return item.title;
+    //       case 'number': return item.number;
+    //       case 'id': return item.id;
+    //       case 'check': return item.check ? 1 : 0;
+    //       default: return '';
+    //     }
+    //   };
 
       this.sort.active = 'title';
       this.sort.direction = 'asc';
       this.list.sort = this.sort;
-    });
+    // });
   }
 
-  openDialog(): void {
-    this.dialog.open(DialogComponent);
-  }
+  // openDialog(): void {
+  //   this.dialog.open(DialogComponent);
+  // }
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ClipboardModule } from 'ngx-clipboard';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './sharepage/navbar/navbar.component';
-import { MenuComponent } from './pages/menu/menu.component';
+import { CasalComponent } from './pages/casal/casal.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ThanksComponent } from './pages/about/thanks.component';
 import { GeneralListComponent } from './pages/general-list/general-list.component';
@@ -26,7 +26,8 @@ import { DialogComponent } from './sharepage/dialog/dialog.component';
 import { MatCard } from "@angular/material/card";
 import { IgxCarouselModule, IgxSliderModule } from "igniteui-angular";
 import { NgbCarouselModule, NgbSlide } from "@ng-bootstrap/ng-bootstrap";
-import { LucideAngularModule, Heart, MapPinned } from 'lucide-angular';
+import { LucideAngularModule, Heart, MapPinned, CircleAlert, Gift } from 'lucide-angular';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -58,11 +59,12 @@ import { LucideAngularModule, Heart, MapPinned } from 'lucide-angular';
     ImageGalleryComponent,
     ListaCasamentoComponent,
     HomeComponent,
-    MenuComponent,
+    CasalComponent,
     DialogComponent,
     NavbarComponent,
     AppComponent,
-    LucideAngularModule.pick({ Heart, MapPinned })
+    LucideAngularModule.pick({ Heart, MapPinned, CircleAlert, Gift}),
+    LayoutModule
   ],
   providers: [
     graphqlProvider

@@ -1,99 +1,74 @@
-import { Component, ElementRef, ViewChild,  AfterViewInit } from '@angular/core';
-import {ClipboardModule} from "ngx-clipboard";
-import {LucideAngularModule} from "lucide-angular";
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { ClipboardModule } from 'ngx-clipboard';
+import { LucideAngularModule } from 'lucide-angular';
+import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
   imports: [
     ClipboardModule,
     LucideAngularModule,
-  ],
-  styleUrls: ['./home.component.scss']
+    NgClass
+  ]
 })
 export class HomeComponent implements AfterViewInit {
   @ViewChild('content') contentElement!: ElementRef;
-  isAtBottom: boolean = false;
+  isAtBottom = false;
 
-  constructor() {}
+  // Flags de breakpoint
+  isHandset = false;
+  isTablet = false;
+  isWeb = false;
+  isWebLandscape = false;
+  isWebPortrait = false;
+
+  mainImageDesktop = '/assets/img/casal/principal1.png';
+  mainImageMobile = '/assets/img/casal/principal.png';
+
+
+  constructor(private readonly breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver.observe([
+      Breakpoints.Handset,
+      Breakpoints.Tablet,
+      Breakpoints.Web,
+      Breakpoints.WebLandscape,
+      Breakpoints.WebPortrait
+    ]).subscribe(result => {
+      this.isHandset = result.breakpoints[Breakpoints.HandsetPortrait] || result.breakpoints[Breakpoints.HandsetLandscape];
+      this.isTablet = result.breakpoints[Breakpoints.Tablet] ?? false;
+      this.isWeb = result.breakpoints[Breakpoints.Web] ?? false;
+      this.isWebLandscape = result.breakpoints[Breakpoints.WebLandscape] ?? false;
+      this.isWebPortrait = result.breakpoints[Breakpoints.WebPortrait] ?? false;
+
+      console.log('Breakpoints:', {
+        result: result.breakpoints,
+        isHandset: this.isHandset,
+        isTablet: this.isTablet,
+        isWeb: this.isWeb,
+        isWebLandscape: this.isWebLandscape,
+        isWebPortrait: this.isWebPortrait
+      });
+    });
+  }
 
   ngAfterViewInit(): void {
-    // Adiciona evento de scroll com uma função simples
     window.addEventListener('scroll', () => {
       const scrollPosition = window.scrollY + window.innerHeight;
       const pageHeight = document.body.scrollHeight;
-
-      // Atualiza estado de acordo com a posição
       this.isAtBottom = scrollPosition >= pageHeight - 50;
     });
   }
 
   scrollToContent() {
     if (this.isAtBottom) {
-      // Volta ao topo
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      // Vai até o conteúdo
       const targetPosition = this.contentElement.nativeElement.offsetTop;
       window.scrollTo({ top: targetPosition + 200, behavior: 'smooth' });
     }
   }
-
-  carouselImages = [
-    'assets/carrossel1.jpg',
-    'assets/carrossel2.jpg',
-    'assets/carrossel3.jpg'
-  ];
-  currentImage = 0;
-
-  nextImage() {
-    this.currentImage = (this.currentImage + 1) % this.carouselImages.length;
-  }
-
-  prevImage() {
-    this.currentImage = (this.currentImage - 1 + this.carouselImages.length) % this.carouselImages.length;
-  }
 }
-
-
-interface ContagemRegressiva {
-  dias: number;
-  horas: number;
-  minutos: number;
-  segundos: number;
-}
-
-function calcularTempoRestante(): ContagemRegressiva {
-  const dataAlvo = new Date(Date.UTC(2025, 1, 8, 18, 0, 0)); // 8 de fevereiro às 15:00 no Brasil (UTC-3)
-  const agora = new Date(); // Pega a data atual no horário local
-
-  // Calcula a diferença total em segundos
-  const diferencaEmSegundos = Math.floor((dataAlvo.getTime() - agora.getTime()) / 1000);
-
-  // Evita valores negativos (caso a data já tenha passado)
-  if (diferencaEmSegundos < 0) {
-    return { dias: 0, horas: 0, minutos: 0, segundos: 0 };
-  }
-
-  // Cálculo preciso de dias, horas, minutos e segundos
-  const dias = Math.floor(diferencaEmSegundos / (60 * 60 * 24));
-  const horas = Math.floor((diferencaEmSegundos % (60 * 60 * 24)) / (60 * 60));
-  const minutos = Math.floor((diferencaEmSegundos % (60 * 60)) / 60);
-  const segundos = diferencaEmSegundos % 60;
-
-  console.log(`Faltam...\n${diferencaEmSegundos} segundos\n${minutos} minutos\n${horas} horas\n${dias} dias`);
-
-  return { dias, horas, minutos, segundos };
-}
-
-function atualizarContagemRegressiva(): void {
-  const contagem = calcularTempoRestante();
-
-  document.getElementById('dias')!.innerText = contagem.dias.toString().padStart(2, '0');
-  document.getElementById('horas')!.innerText = contagem.horas.toString().padStart(2, '0');
-  document.getElementById('minutos')!.innerText = contagem.minutos.toString().padStart(2, '0');
-  document.getElementById('segundos')!.innerText = contagem.segundos.toString().padStart(2, '0');
-}
-
-// Atualiza a contagem regressiva a cada segundo
-setInterval(atualizarContagemRegressiva, 1000);

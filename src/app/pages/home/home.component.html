@@ -1,99 +1,66 @@
-<!-- Parte 1 - Banner, Texto e Menu de Ícones -->
-<section class="top-section">
+<!-- home.component.html -->
+<section class="top-section" id="inicio">
   <div class="banner-container">
-    <img src="/assets/img/casal/principal1.png" alt="Banner" class="banner-image" />
+    <img
+      [src]="isHandset ? mainImageMobile : mainImageDesktop"
+      alt="Banner"
+      [ngClass]="{ 'banner-image': true, 'mobile-banner': isHandset }"
+      loading="lazy"
+    />
 
     <div class="content-center">
       <h1>Neto e Clara</h1>
       <p class="invite">Convidam para celebrar a</p>
-      <p class="name">Festa da graça!</p>
+      <p class="name">festa da graça!</p>
+      <hr class="line" />
       <p class="date">04 Outubro, 2025 às 15:30</p>
+      <hr class="line" />
     </div>
   </div>
 
   <div class="intro-text">
     <p class="verse">
-            “Toda glória seja a Deus que, por seu grandioso poder que <br>
-            atua em nós, é capaz de realizar infinitamente mais que <br>
-            pedimos e pensamos.“
+      “Toda glória seja a Deus que, por seu grandioso poder que <br />
+      atua em nós, é capaz de realizar infinitamente mais que <br />
+      pedimos e pensamos.“
     </p>
     <p class="cap">Efésios 3:20</p>
   </div>
 
   <nav class="icon-menu">
-    <div class="icon-item">
-      <lucide-icon name="heart" style="color: black"></lucide-icon>
-      <p>Casal</p>
-    </div>
-    <div class="icon-item">
-
-      <lucide-icon name="map-pinned" style="color: black"></lucide-icon>
-      <p>Local</p>
-    </div>
-    <div class="icon-item">
-
-      <lucide-icon name="heart" style="color: black"></lucide-icon>
-      <p>Busca</p>
-    </div>
-    <div class="icon-item">
-      <lucide-icon name="heart" style="color: black"></lucide-icon>
-      <p>Mensagens</p>
-    </div>
+    <a class="icon-item" href="/casal">
+      <div class="icon-circle">
+        <lucide-icon name="heart"></lucide-icon>
+      </div>
+      <p class="menu-name">O Casal</p>
+    </a>
+    <a class="icon-item" href="#" data-bs-toggle="modal"  data-bs-target="#igreja">
+      <div class="icon-circle">
+        <lucide-icon name="map-pinned"></lucide-icon>
+      </div>
+      <p class="menu-name">Localização</p>
+    </a>
+    <a class="icon-item" href="#avisos">
+      <div class="icon-circle">
+        <lucide-icon name="circle-alert"></lucide-icon>
+      </div>
+      <p class="menu-name">Avisos</p>
+    </a>
+    <a class="icon-item" href="/listas">
+      <div class="icon-circle">
+        <lucide-icon name="gift"></lucide-icon>
+      </div>
+      <p class="menu-name">Presentes</p>
+    </a>
   </nav>
 </section>
 
-<!-- Parte 2 - Carrossel -->
-<section class="carousel-section">
-  <div class="carousel">
-    <img [src]="carouselImages[currentImage]" class="carousel-image" />
-    <div class="carousel-controls">
-      <button (click)="prevImage()">&#8592;</button>
-      <button (click)="nextImage()">&#8594;</button>
-    </div>
-  </div>
-  <p class="carousel-text">Explore nossas fotos e descubra mais.</p>
-</section>
 
+<!-- Outras seções exemplo -->
+<!--<section id="localizacao"><h2>Localização</h2></section>-->
+<!--<section id="avisos"><h2>Avisos</h2></section>-->
+<!--<section id="presentes"><h2>Presentes</h2></section>-->
 
-
-<!--<div class="home">-->
-<!--  <div class="initial-page">-->
-<!--    <div class="bg-image-card">-->
-<!--      <div class="content-center">-->
-<!--        <h1>Neto e Clara</h1>-->
-<!--        <p class="invite">Convidam para celebrar a</p>-->
-<!--        <p class="name">Festa da graça!</p>-->
-<!--        <p class="date">04 Outubro, 2025 às 15:30</p>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div class="text">-->
-<!--      <p class="verse">-->
-<!--        “Ame o Senhor, o seu Deus, de todo o seu coração, <br>-->
-<!--        de toda a sua alma e de todas as suas forças. <br>-->
-<!--        Que todas estas palavras que hoje lhe ordeno estejam em seu coração.“-->
-<!--      </p>-->
-<!--      <p class="cap">Deuteronômio 6:5-6</p>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-
-
-<!--    <button-->
-<!--      type="button" style="position: fixed;-->
-<!--    bottom: 25px;-->
-<!--    right: 30px;-->
-<!--    background: #3B784E;-->
-<!--    border-color: #3B784E;-->
-<!--    width: 8vh;-->
-<!--    height: 5vh;-->
-<!--    transition: all 0.4s;"-->
-<!--      class="btn btn-primary back-to-top"-->
-<!--      id="btn-back-to-top"-->
-<!--      (click)="scrollToContent()">-->
-<!--      <i class="bi isAtBottom ? 'bi-arrow-up' : 'bi-arrow-down'"></i>-->
-<!--    </button>-->
 
 
 
@@ -142,22 +109,22 @@
 <!--      </div >-->
 
 
-<!--      <div class="menu-itens">-->
-<!--        <div class="menu-item">-->
-<!--          <a href="#" class="link-menu" data-bs-toggle="modal" data-bs-target="#igreja">-->
-<!--            <img class="img-menu" src="assets\img\home\igreja.png" alt="">-->
+<!--      <div class="casal-itens">-->
+<!--        <div class="casal-item">-->
+<!--          <a href="#" class="link-casal" data-bs-toggle="modal" data-bs-target="#igreja">-->
+<!--            <img class="img-casal" src="assets\img\home\igreja.png" alt="">-->
 <!--            <p class="card-text text-home">Igreja</p>-->
 <!--          </a>-->
 <!--        </div>-->
-<!--        <div class="menu-item">-->
-<!--          <a href="#" class="link-menu" data-bs-toggle="modal" data-bs-target="#avisos">-->
-<!--            <img class="img-menu" src="assets\img\home\avisos.png" alt="">-->
+<!--        <div class="casal-item">-->
+<!--          <a href="#" class="link-casal" data-bs-toggle="modal" data-bs-target="#avisos">-->
+<!--            <img class="img-casal" src="assets\img\home\avisos.png" alt="">-->
 <!--            <p class="card-text text-home">Avisos</p>-->
 <!--          </a>-->
 <!--        </div>-->
-<!--        <div class="menu-item">-->
-<!--          <a href="#" class="link-menu" routerLink="/lists">-->
-<!--            <img class="img-menu" src="assets\img\home\presente.png" alt="">-->
+<!--        <div class="casal-item">-->
+<!--          <a href="#" class="link-casal" routerLink="/lists">-->
+<!--            <img class="img-casal" src="assets\img\home\presente.png" alt="">-->
 <!--            <p class="card-text text-home">Presentes</p>-->
 <!--          </a>-->
 <!--        </div>-->

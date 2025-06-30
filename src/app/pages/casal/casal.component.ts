@@ -14,8 +14,13 @@ export class CasalComponent {
   constructor() { }
 
   carouselImages = [
-    'assets/img/carousel/1.png',
-    'assets/img/carousel/11.png'
+    'assets/img/carousel/70.cmyk.webp',
+    'assets/img/carousel/71.cmyk.webp',
+    'assets/img/carousel/57.cmyk.webp',
+    'assets/img/carousel/64.cmyk.webp',
+    'assets/img/carousel/35.cmyk.webp',
+    'assets/img/carousel/3.cmyk.webp',
+    'assets/img/carousel/4.cmyk.webp'
   ];
   currentImage = 0;
 

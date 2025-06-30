@@ -1,17 +1,12 @@
-/* Carrossel */
 .carousel-section {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centraliza verticalmente o conteúdo */
-  padding: 2rem; /* Opcional, ajuste conforme o visual */
-  box-sizing: border-box;
+  justify-content: center;
   text-align: center;
-  background-color: #f9f9f9;
 }
 
 .carousel {
-  width: calc(100% - 50rem);
+  width: 50%;
   margin: auto;
 }
 
@@ -27,7 +22,7 @@
   top: 50%;
   transform: translateY(-50%);
   background: transparent;
-  color: #439c0f;
+  color: #102305;
   border: none;
   font-size: 1.5rem;
   padding: 0.25rem 0.5rem;
@@ -52,9 +47,9 @@
 }
 
 .carousel-text {
-  margin-top: 2rem;
+  margin-top: 3rem;
   font-size: 1rem;
   color: #666;
-  max-height: calc(100% - 30rem);
+  max-width: 50%;
   margin-inline: auto;
 }

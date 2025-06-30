@@ -1,17 +1,27 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-// import { BackService } from 'src/app/services/backService';
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
-import {MatCell, MatHeaderCell, MatHeaderRow, MatRow, MatTable, MatTableDataSource} from "@angular/material/table";
-import {MatCheckbox, MatCheckboxChange} from '@angular/material/checkbox';
-import {MatFormField, MatLabel, MatOption, MatSelect, MatSelectChange} from '@angular/material/select';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { BackService } from 'src/app/services/backService';
 import { Router } from '@angular/router';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import { DialogComponent } from 'src/app/sharepage/dialog/dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-import {NgForOf, NgIf, NgStyle} from "@angular/common";
+import {FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule} from "@angular/forms";
+import {DialogComponent} from "../../sharepage/dialog/dialog.component";
+import {MatSort} from "@angular/material/sort";
+import {MatPaginator} from "@angular/material/paginator";
+import {
+  MatCell, MatCellDef,
+  MatColumnDef,
+  MatHeaderCell, MatHeaderCellDef,
+  MatHeaderRow, MatHeaderRowDef,
+  MatRow, MatRowDef,
+  MatTable,
+  MatTableDataSource
+} from '@angular/material/table';
+import {MatDialog} from "@angular/material/dialog";
+import {MatCheckbox, MatCheckboxChange} from "@angular/material/checkbox";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {MatError, MatFormField, MatInput, MatLabel} from "@angular/material/input";
+import {MatOption, MatSelect} from "@angular/material/select";
+import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {NavbarComponent} from "../../sharepage/navbar/navbar.component";
+import {MatFabButton} from "@angular/material/button";
 
 interface Item {
   id: string;
@@ -22,31 +32,38 @@ interface Item {
 
 interface SelectedItem {
   item: Item;
-  quantity: number;
+  quantityControl: FormControl;
 }
 
 @Component({
   selector: 'app-general-list',
   templateUrl: './general-list.component.html',
   imports: [
-    MatSelect,
-    MatLabel,
-    MatFormField,
-    MatOption,
-    FormsModule,
-    NgForOf,
-    MatPaginator,
     MatProgressSpinner,
-    MatHeaderRow,
-    MatRow,
-    MatHeaderCell,
-    MatCell,
-    MatCheckbox,
-    ReactiveFormsModule,
+    MatPaginator,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatError,
     NgStyle,
     NavbarComponent,
+    MatCheckbox,
     MatTable,
-    NgIf
+    MatCell,
+    MatHeaderCell,
+    MatHeaderRow,
+    MatRow,
+    ReactiveFormsModule,
+    MatOption,
+    MatFabButton,
+    MatColumnDef,
+    MatInput,
+    NgIf,
+    MatRowDef,
+    MatHeaderRowDef,
+    MatCellDef,
+    NgForOf,
+    MatHeaderCellDef,
   ],
   styleUrls: ['./general-list.component.scss']
 })
@@ -54,14 +71,12 @@ export class GeneralListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  public list!: MatTableDataSource<Item>;
+  public list = new MatTableDataSource<Item>([]);
   public selectedItems: SelectedItem[] = [];
 
   form: FormGroup;
-  qtde_temp: number = 0;
-  invalid_submit = true;
 
-  constructor(private fb: FormBuilder, private router: Router, public dialog: MatDialog) {
+  constructor(private fb: FormBuilder, private backService: BackService, private router: Router, public dialog: MatDialog) {
     this.form = this.fb.group({
       name_user: ['', Validators.required],
     });
@@ -77,23 +92,43 @@ export class GeneralListComponent implements OnInit, AfterViewInit {
     this.list.sort = this.sort;
   }
 
-  onSelectItem(item: any, event: MatCheckboxChange) {
-    if (event.checked) {
-      this.selectedItems.push({ item, quantity: this.qtde_temp });
-    } else {
-      this.selectedItems = this.selectedItems.filter(selected => selected.item !== item);
-    }
-    console.log(this.selectedItems)
+  loadList() {
+    this.backService.getList().subscribe((data: Item[]) => {
+      this.list.data = data;
 
+      this.list.paginator = this.paginator;
+      this.list.sort = this.sort;
+      this.list.sortingDataAccessor = (item, property) => {
+        switch (property) {
+          case 'title': return item.title;
+          case 'number': return item.number;
+          case 'id': return item.id;
+          case 'check': return item.check ? 1 : 0;
+          default: return '';
+        }
+      };
+
+      this.sort.active = 'title';
+      this.sort.direction = 'asc';
+      this.list.sort = this.sort;
+    });
   }
 
-  onQuantityChange(item: Item, event: MatSelectChange): void {
-    const quantity = event.value;
-    const selectedItem = this.selectedItems.find(selectedItem => selectedItem.item.id === item.id);
+  onSelectItem(item: Item, event: MatCheckboxChange) {
+    if (event.checked) {
+      this.selectedItems.push({
+        item,
+        quantityControl: new FormControl(1, Validators.required)
+      });
+    } else {
+      this.selectedItems = this.selectedItems.filter(selected => selected.item.id !== item.id);
+    }
+  }
 
+  onQuantityChange(item: Item, quantity: number): void {
+    const selectedItem = this.selectedItems.find(selected => selected.item.id === item.id);
     if (selectedItem) {
-      selectedItem.quantity = quantity;
-      console.log(`Quantidade atualizada para ${selectedItem.item.title}: ${selectedItem.quantity}`);
+      selectedItem.quantityControl.setValue(quantity);
     }
   }
 
@@ -103,49 +138,24 @@ export class GeneralListComponent implements OnInit, AfterViewInit {
 
   enviar() {
     if (this.form.invalid || this.selectedItems.length === 0) {
-      // this.openDialog();
-    }else{
-      const itemInitial: Item = {
-        id: '',
-        title: '',
-        number: 0,
-        check: false
-      };
-
-      const selected: SelectedItem = {
-        item: itemInitial,
-        quantity: 0
-      }
-      // this.backService.update(selected, '')
-      // this.selectedItems.map(itemX =>
-      //   this.backService.update(itemX, this.form.get('name_user')?.value)
-      // );
-      this.router.navigate(['/thanks']);
+      this.openDialog();
+      return;
     }
+
+    const userName = this.form.get('name_user')?.value;
+
+    this.selectedItems.forEach(selected => {
+      const quantity = selected.quantityControl.value;
+      this.backService.update(
+        { item: selected.item, quantity },
+        userName
+      );
+    });
+
+    this.router.navigate(['/thanks']);
   }
 
-  loadList() {
-    // this.backService.getList().subscribe((data: Item[]) => {
-    //   this.list = new MatTableDataSource<Item>(data);
-    //   this.list.paginator = this.paginator;
-    //   this.list.sort = this.sort;
-    //   this.list.sortingDataAccessor = (item, property) => {
-    //     switch (property) {
-    //       case 'title': return item.title;
-    //       case 'number': return item.number;
-    //       case 'id': return item.id;
-    //       case 'check': return item.check ? 1 : 0;
-    //       default: return '';
-    //     }
-    //   };
-
-      this.sort.active = 'title';
-      this.sort.direction = 'asc';
-      this.list.sort = this.sort;
-    // });
+  openDialog(): void {
+    this.dialog.open(DialogComponent);
   }
-
-  // openDialog(): void {
-  //   this.dialog.open(DialogComponent);
-  // }
 }

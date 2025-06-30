@@ -18,6 +18,7 @@ import {NgClass} from "@angular/common";
 export class HomeComponent implements AfterViewInit {
   @ViewChild('content') contentElement!: ElementRef;
   isAtBottom = false;
+  countdownInterval: any;
 
   // Flags de breakpoint
   isHandset = false;
@@ -26,8 +27,13 @@ export class HomeComponent implements AfterViewInit {
   isWebLandscape = false;
   isWebPortrait = false;
 
-  mainImageDesktop = '/assets/img/casal/principal1.png';
-  mainImageMobile = '/assets/img/casal/principal.png';
+  mainImageDesktop = '/assets/img/casal/principal1.webp';
+  mainImageMobile = '/assets/img/casal/principal.webp';
+
+
+  ngOnInit(): void {
+    this.startCountdown();
+  }
 
 
   constructor(private readonly breakpointObserver: BreakpointObserver) {
@@ -61,6 +67,40 @@ export class HomeComponent implements AfterViewInit {
       const pageHeight = document.body.scrollHeight;
       this.isAtBottom = scrollPosition >= pageHeight - 50;
     });
+  }
+
+  startCountdown(): void {
+    const weddingDate = new Date('2025-10-04T15:30:00');
+
+    this.countdownInterval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate.getTime() - now;
+
+      if (distance < 0) {
+        clearInterval(this.countdownInterval);
+        this.updateCountdownDisplay(0, 0, 0, 0);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      this.updateCountdownDisplay(days, hours, minutes, seconds);
+    }, 1000);
+  }
+
+  updateCountdownDisplay(dias: number, horas: number, minutos: number, segundos: number): void {
+    const setText = (id: string, value: number) => {
+      const el = document.getElementById(id);
+      if (el) el.innerText = value.toString().padStart(2, '0');
+    };
+
+    setText('dias', dias);
+    setText('horas', horas);
+    setText('minutos', minutos);
+    setText('segundos', segundos);
   }
 
   scrollToContent() {

@@ -1,19 +1,22 @@
-import { Provider } from "@angular/core";
-import { APOLLO_OPTIONS } from "apollo-angular";
-import { ApolloClientOptions, InMemoryCache, ApolloLink } from "@apollo/client";
-import { HttpLink } from "apollo-angular/http";
+import { provideApollo } from 'apollo-angular';
+import { ApolloClient, InMemoryCache } from '@apollo/client/core';
+import { inject } from '@angular/core';
+import { HttpLink } from 'apollo-angular/http';
 
-export const graphqlProvider: Provider = {
-    provide: APOLLO_OPTIONS,
-    useFactory:(
-        httpLink: HttpLink,
-    ): ApolloClientOptions<unknown> => ({
-        link: ApolloLink.from([
-            httpLink.create({
-                uri:"https://backcasamentosm.onrender.com/graphql"
-            })
-        ]),
-        cache: new InMemoryCache(),
-    }),
-    deps: [HttpLink],
-}
+export const graphqlProvider = provideApollo(() => ({
+  cache: new InMemoryCache(),
+  link: inject(HttpLink).create({
+    uri: 'https://backcasamentosm.onrender.com/graphql',
+  }),
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+    query: {
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all',
+    },
+  },
+}));
+

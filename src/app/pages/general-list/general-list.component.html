@@ -10,70 +10,67 @@
       <h5>Aqui você encontra nossa lista de presentes e pode escolher onde comprar cada item.</h5>
       <h5> Marque o que deseja nos presentear para termos o controle </h5>
     </div>
-    <div class="color-options" style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-      <p style="margin-top: 1rem; color: red;">Nossas preferências de cores para os presentes: Branco, Cinza, Preto e Azul</p>
-      <div class="colors" style="display: flex">
-        <div class="color-circle" [ngStyle]="{'background-color': 'white'}"></div>
-        <div class="color-circle" [ngStyle]="{'background-color': '#474A51'}"></div>
-        <div class="color-circle" [ngStyle]="{'background-color': 'black'}"></div>
-        <div class="color-circle" [ngStyle]="{'background-color': '#90B1DB'}"></div>
+    <div class="color-options" style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+      <p style="margin-top: 1rem; color: red;">Nossas preferências de cores para os presentes: Branco, Preto, Cinza, Bambu e Inox</p>
+      <div class="colors" style="display: flex; gap: 8px;">
+        <div class="color-circle" [ngStyle]="{'background-color': '#FFFFFF', 'border': '1px solid #ccc'}" title="Branco"></div>
+        <div class="color-circle" [ngStyle]="{'background-color': '#000000'}" title="Preto"></div>
+        <div class="color-circle" [ngStyle]="{'background-color': '#474A51'}" title="Cinza"></div>
+        <div class="color-circle" [ngStyle]="{'background-color': '#C9A46A'}" title="Bambu"></div>
+        <div class="color-circle" [ngStyle]="{'background-color': '#B0B0B0'}" title="Inox"></div>
       </div>
-    </div>
-    <div>
-
     </div>
   </div>
 
   <div class="title">
-    <form class="input-form" [formGroup]="form">
-      <mat-form-field class="full-width">
+    <form [formGroup]="form" class="input-form">
+      <mat-form-field class="full-width" appearance="fill">
         <mat-label>Digite Seu Nome</mat-label>
-        <input matInput formControlName="name_user" placeholder="Digite seu nome" required >
-<!--        <mat-error *ngIf="form.get('name_user')?.hasError('required')">-->
-<!--          O nome é obrigatório-->
-<!--        </mat-error>-->
+        <input matInput formControlName="name_user" placeholder="Digite seu nome" required>
+        <mat-error *ngIf="form.get('name_user')?.hasError('required')">
+          O nome é obrigatório
+        </mat-error>
       </mat-form-field>
     </form>
 
     <p>Escolha um produto que deseja nos presentear: </p>
   </div>
 
-  <table mat-table [dataSource]="list || []" matSort class="mat-elevation-z8 test-table">
+  <table mat-table [dataSource]="list" matSort class="mat-elevation-z8 test-table">
+
     <!-- Checkbox Column -->
     <ng-container matColumnDef="select">
-      <mat-header-cell *matHeaderCellDef></mat-header-cell>
-      <mat-cell *matCellDef="let item">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let item">
         <mat-checkbox (change)="onSelectItem(item, $event)"></mat-checkbox>
-      </mat-cell>
+      </td>
     </ng-container>
 
     <!-- Quantidade Column -->
-    <ng-container matColumnDef="number" >
-      <mat-header-cell *matHeaderCellDef> Qtde </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{ item.number }} </mat-cell>
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef> Qtde </th>
+      <td mat-cell *matCellDef="let item"> {{ item.number }} </td>
     </ng-container>
 
     <!-- Produto Column -->
     <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef> Produto </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{ item.title }} </mat-cell>
+      <th mat-header-cell *matHeaderCellDef> Produto </th>
+      <td mat-cell *matCellDef="let item"> {{ item.title }} </td>
     </ng-container>
 
-    <!-- Header and Row Definitions -->
-    <mat-header-row *matHeaderRowDef="['select', 'number', 'title']"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: ['select', 'number', 'title']"></mat-row>
-
+    <tr mat-header-row *matHeaderRowDef="['select', 'number', 'title']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['select', 'number', 'title']"></tr>
   </table>
-  <mat-spinner *ngIf="!list"></mat-spinner>
 
-  <mat-paginator [pageSizeOptions]="[10, 15, 25]" [showFirstLastButtons]="true"
-  [hidePageSize]="true"></mat-paginator>
+  <mat-spinner *ngIf="!list.data.length"></mat-spinner>
+
+  <mat-paginator [pageSizeOptions]="[10, 15, 25]" [showFirstLastButtons]="true" [hidePageSize]="true"></mat-paginator>
 
   <div class="quantity-input-container">
     <div class="quantity-input" *ngFor="let selectedItem of selectedItems">
-      <mat-label>Quantidade para {{ selectedItem.item.title }}:</mat-label>
-      <mat-form-field>
-        <mat-select class="mat-select-qtde" [(ngModel)]="selectedItem.quantity" (selectionChange)="onQuantityChange(selectedItem.item, $event)" required>
+      <mat-form-field appearance="fill">
+        <mat-label>Quantidade para {{ selectedItem.item.title }}:</mat-label>
+        <mat-select [formControl]="selectedItem.quantityControl" (selectionChange)="onQuantityChange(selectedItem.item, $event.value)" required>
           <mat-option *ngFor="let option of getQuantityOptions(selectedItem.item.number)" [value]="option">
             {{ option }}
           </mat-option>
@@ -82,6 +79,6 @@
     </div>
   </div>
 
-  <button mat-fab extended (click)="enviar()">Enviar</button>
+  <button mat-fab color="primary" (click)="enviar()">Enviar</button>
 
 </div>

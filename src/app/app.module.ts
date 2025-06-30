@@ -3,16 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './sharepage/navbar/navbar.component';
-import { CasalComponent } from './pages/casal/casal.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ThanksComponent } from './pages/about/thanks.component';
-import { GeneralListComponent } from './pages/general-list/general-list.component';
-import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
-import { ListaCasamentoComponent } from './pages/lista-casamento/lista-casamento.component';
-import { DialogComponent } from './sharepage/dialog/dialog.component';
-
 import { graphqlProvider } from 'src/libs';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";

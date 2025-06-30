@@ -19,7 +19,7 @@ interface SelectedItem {
     providedIn: 'root'
 })
 export class BackService {
-  constructor(private apollo: Apollo) {}
+  constructor(private readonly apollo: Apollo) {}
 
   getList(): Observable<Item[]> {
     return this.apollo.watchQuery({

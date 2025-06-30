@@ -1,0 +1,51 @@
+.obrigado {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* evita que o banner vaze */
+  text-align: center;
+}
+
+.banner-left-inferior {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30%;
+  height: auto;
+  background-image: url(../../../assets/img/home/folhagem.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom left;
+  aspect-ratio: 3 / 4; /* opcional, ajusta proporção da imagem */
+  pointer-events: none; /* impede que interfira na interação com o conteúdo */
+  z-index: 0;
+}
+
+.thanks {
+  z-index: 1;
+  max-width: 50%;
+  font-family: "Glacialfont", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.texto {
+  width: 100%;
+}
+
+button {
+  margin-top: 4rem;
+}
+
+.assinatura {
+  margin-top: 5rem;
+  font-family: Myfont, 'Helvetica', 'Arial', sans-serif;
+}
+
+.msg {
+  margin-top: 2rem;
+}

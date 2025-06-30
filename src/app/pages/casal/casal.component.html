@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="carousel-section" id="casal">
   <div class="carousel">
-    <img loading="lazy" [src]="carouselImages[currentImage]" alt="images-carousel" class="carousel-image" />
+    <img [src]="carouselImages[currentImage]" alt="um carrosel de fotos do casal" class="carousel-image" />
     <button class="carousel-btn left" (click)="prevImage()">&#8592;</button>
     <button class="carousel-btn right" (click)="nextImage()">&#8594;</button>
   </div>

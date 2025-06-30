@@ -76,7 +76,7 @@ export class GeneralListComponent implements OnInit, AfterViewInit {
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private backService: BackService, private router: Router, public dialog: MatDialog) {
+  constructor(private readonly fb: FormBuilder, private readonly backService: BackService, private readonly router: Router, public dialog: MatDialog) {
     this.form = this.fb.group({
       name_user: ['', Validators.required],
     });
@@ -152,7 +152,7 @@ export class GeneralListComponent implements OnInit, AfterViewInit {
       );
     });
 
-    this.router.navigate(['/thanks']);
+    this.router.navigate(['/agradecimento']);
   }
 
   openDialog(): void {

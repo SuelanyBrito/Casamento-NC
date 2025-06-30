@@ -1,9 +1,9 @@
 .navbar{
-  background: transparent;
+  background: #41513f;
 }
 
 .nav-link{
-  color: #956d48;
+  color: white;
   font-family: EBGaramond, 'Helvetica', 'Arial', sans-serif;
   font-size: 20px;
   font-weight: bold;
@@ -17,10 +17,6 @@
   padding-right: 2rem;
 }
 
-.navbar-brand {
-  font-family: Myfont, 'Helvetica', 'Arial', sans-serif;
-}
-
 .navbar-light .navbar-nav .nav-link.active-link{
-  color: rgba(10, 60, 19, 0.5);
+  color: #c6cbc6;
 }

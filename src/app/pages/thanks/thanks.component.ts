@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {MatFabButton} from "@angular/material/button";
 
 @Component({
-  selector: 'app-about',
+  selector: 'app-thanks',
   templateUrl: './thanks.component.html',
   imports: [
     RouterLink,
@@ -11,11 +11,8 @@ import {MatFabButton} from "@angular/material/button";
   ],
   styleUrls: ['./thanks.component.scss']
 })
-export class ThanksComponent implements OnInit {
+export class ThanksComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

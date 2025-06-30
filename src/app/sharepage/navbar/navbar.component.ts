@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
@@ -10,11 +10,8 @@ import {RouterLink, RouterLinkActive} from "@angular/router";
   ],
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent{
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

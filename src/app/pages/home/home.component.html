@@ -5,7 +5,6 @@
       [src]="isHandset ? mainImageMobile : mainImageDesktop"
       alt="Banner"
       [ngClass]="{ 'banner-image': true, 'mobile-banner': isHandset }"
-      loading="lazy"
     />
 
     <div class="content-center">
@@ -39,7 +38,7 @@
       </div>
       <p class="menu-name">Localização</p>
     </a>
-    <a class="icon-item" href="#avisos">
+    <a class="icon-item" href="#" data-bs-toggle="modal"  data-bs-target="#avisos">
       <div class="icon-circle">
         <lucide-icon name="circle-alert"></lucide-icon>
       </div>
@@ -82,8 +81,8 @@
         </div>
         <div class="modal-igreja">
           <img src="assets\img\igreja.png" class="card-img-top imgModal" alt="...">
-          <p class="card-text place text-center">Celebre conosco essa Graça que nos levaasorrir no dia de hoje!<br />
-            O culto de Celebração da nossa união ocorreráás 15:30 na <br /> Igreja Batista Bíblica do Cruzeiro -
+          <p class="card-text place text-center">Celebre conosco essa Graça que nos leva a sorrir no dia de hoje!<br />
+            O culto de Celebração da nossa união ocorrerá ás 15:30 na <br /> Igreja Batista Bíblica do Cruzeiro -
             Campina Grande - PB. <br /> Contamos com asua presença!</p>
         </div>
         <div #container class="modal-footer modalF">
@@ -96,17 +95,13 @@
     </div>
   </div>
 
-
-  <div class="modal fade" id="avisos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header modalH">
-          <h5 class="modal-title text-center" id="exampleModalLabel">Avisos</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-igreja">
-          <img src="assets\img\evite.png" class="card-img-top imgModal" alt="...">
-        </div>
-      </div>
+<!-- Modal Avisos -->
+<div class="modal fade" id="avisos" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-0 border-0 overflow-hidden position-relative">
+      <button type="button" class="btn-close position-absolute top-0 end-0 m-2 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+      <img src="assets/img/Confirme-sua-presença.webp" class="w-100 d-block" alt="Aviso">
     </div>
   </div>
+</div>
+

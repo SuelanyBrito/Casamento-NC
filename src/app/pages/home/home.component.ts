@@ -27,7 +27,7 @@ export class HomeComponent implements AfterViewInit {
   isWebLandscape = false;
   isWebPortrait = false;
 
-  mainImageDesktop = '/assets/img/casal/principal1.webp';
+  mainImageDesktop = '/assets/img/casal/5.webp';
   mainImageMobile = '/assets/img/casal/principal.webp';
 
 

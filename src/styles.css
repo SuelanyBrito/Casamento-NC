@@ -23,3 +23,8 @@
 :root{
   --first-color: blueviolet;
 }
+
+body {
+  background: linear-gradient(to left, #ffffff, #dce5dd);
+}
+

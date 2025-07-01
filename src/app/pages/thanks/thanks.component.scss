@@ -4,8 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* evita que o banner vaze */
+  overflow: hidden;
   text-align: center;
+  padding: 1rem;
 }
 
 .banner-left-inferior {
@@ -18,34 +19,68 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom left;
-  aspect-ratio: 3 / 4; /* opcional, ajusta proporção da imagem */
-  pointer-events: none; /* impede que interfira na interação com o conteúdo */
+  aspect-ratio: 3 / 4;
+  pointer-events: none;
   z-index: 0;
 }
 
 .thanks {
   z-index: 1;
-  max-width: 50%;
+  max-width: 600px;
+  width: 100%;
   font-family: "Glacialfont", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
 }
 
 .texto {
   width: 100%;
-}
-
-button {
-  margin-top: 4rem;
+  font-size: 1.25rem;
 }
 
 .assinatura {
-  margin-top: 5rem;
+  margin-top: 3rem;
   font-family: Myfont, 'Helvetica', 'Arial', sans-serif;
+  font-size: 1.5rem;
 }
+
+.btn-voltar {
+  margin-top: 3rem;
+  background-color: #4CAF50 !important; /* Verde */
+  color: white !important;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 0.375rem; /* cantos arredondados sutis */
+  min-width: 180px; /* garante um tamanho mínimo */
+  text-transform: none; /* para não deixar o texto em caixa alta */
+  box-shadow: none;
+}
+
 
 .msg {
   margin-top: 2rem;
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 768px) {
+  .banner-left-inferior {
+    width: 50%;
+  }
+
+  .thanks {
+    padding: 1rem;
+    max-width: 90%;
+  }
+
+  .texto {
+    font-size: 1rem;
+  }
+
+  .assinatura {
+    font-size: 1.25rem;
+  }
 }

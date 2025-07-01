@@ -1,56 +1,74 @@
 .carousel-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
   text-align: center;
-  margin-top: 10vh;
+
+  .carousel {
+    position: relative;
+    width: 100%;
+    max-width: 500px; // limite para desktop
+    margin-bottom: 1rem;
+
+    .carousel-image {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.7);
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 50%;
+
+      &.left {
+        left: 10px;
+      }
+
+      &.right {
+        right: 10px;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.9);
+      }
+    }
+  }
+
+  .carousel-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 800px;
+  }
 }
 
-.carousel {
-  width: 50%;
-  margin: auto;
-}
+// Estilo para dispositivos móveis
+@media (max-width: 768px) {
+  .carousel {
+    max-width: 90vw;
 
-.carousel-image {
-  width: 100%;
-  max-height: 25rem;
-  object-fit: contain;
-  border-radius: 10px;
-}
+    .carousel-image {
+      width: 100%;
+      max-height: 400px; // aumenta um pouco a altura no mobile
+      object-fit: cover;
+    }
 
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  color: #102305;
-  border: none;
-  font-size: 1.5rem;
-  padding: 0.25rem 0.5rem;
-  cursor: pointer;
-  z-index: 1;
-  border-radius: 50%;
-  transition: background 0.2s ease;
-  opacity: 0.6;
-}
+    .carousel-btn {
+      font-size: 2rem;
+      padding: 0.6rem 1.2rem;
+    }
+  }
 
-.carousel-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-  opacity: 1;
-}
-
-.carousel-btn.left {
-  left: 0.5rem;
-}
-
-.carousel-btn.right {
-  right: 0.5rem;
-}
-
-.carousel-text {
-  margin-top: 3rem;
-  font-size: 1rem;
-  color: #666;
-  max-width: 50%;
-  margin-inline: auto;
+  .carousel-text {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
 }

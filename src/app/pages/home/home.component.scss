@@ -2,33 +2,29 @@ html {
   scroll-behavior: smooth;
 }
 
-.banner-left-inferior {
+.banner {
   position: absolute;
-  bottom: 0;
-  left: 0;
   width: 30%;
-  height: auto;
-  background-image: url(../../../assets/img/1.png);
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: bottom left;
-  aspect-ratio: 3 / 4; /* opcional, ajusta proporção da imagem */
-  pointer-events: none; /* impede que interfira na interação com o conteúdo */
-  z-index: 0;
-}
-
-.banner-right-suṕerior {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 30%;
-  background-image: url(../../../assets/img/2.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: top right;
   aspect-ratio: 3 / 4;
   pointer-events: none;
   z-index: 0;
+}
+
+.left-inferior {
+  bottom: 0;
+  left: 0;
+  height: auto;
+  background-image: url(../../../assets/img/home-decoration/1.webp);
+  background-position: bottom left;
+}
+
+.right-suṕerior {
+  top: 0;
+  right: 0;
+  background-image: url(../../../assets/img/home-decoration/2.webp);
+  background-position: top right;
 }
 
 .top-section {
@@ -60,9 +56,8 @@ html {
 
 .mobile-banner {
   width: 100%;
-  height: auto;
-  max-height: 60vh;
-  object-fit: cover;
+  height: 100vh;
+  object-fit: contain;
 }
 
 .content-center {
@@ -121,8 +116,15 @@ html {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
   margin-bottom: 1rem;
+
+  .mobile {
+    gap: 1rem;
+  }
+
+  .web {
+    gap: 2rem;
+  }
 }
 
 .icon-item {
@@ -162,6 +164,32 @@ html {
   color: black;
 }
 
+.contagem-mobile {
+  gap: 15px !important;
+}
+
+.contagem-mobile .item {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.contagem-mobile .valor {
+  font-size: 1.2rem !important;
+  line-height: 50px !important;
+}
+
+.contagem-mobile .unidade {
+  font-size: 0.75rem !important;
+}
+
+.contagem-mobile .item::before {
+  width: 50px !important;
+  height: 50px !important;
+  border-width: 2px !important;
+}
+
+
+
 .contagem {
   display: flex;
   justify-content: center;
@@ -193,7 +221,6 @@ html {
   display: block;
 }
 
-/* Círculo animado */
 .contagem .item::before {
   content: "";
   position: absolute;

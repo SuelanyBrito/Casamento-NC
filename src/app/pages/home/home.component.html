@@ -1,5 +1,4 @@
-<!-- home.component.html -->
-<section class="top-section" id="inicio">
+<section class="top-section">
   <div class="banner-container">
     <img
       [src]="isHandset ? mainImageMobile : mainImageDesktop"
@@ -19,12 +18,12 @@
 
   <div class="intro-text">
     <p class="verse">
-      “Toda glória seja a Deus que, por seu grandioso poder que <br />
-      atua em nós, é capaz de realizar infinitamente mais que pedimos e pensamos.“ <br /> EFÉSIOS 3:20
+      “Toda glória seja a Deus que, por seu grandioso poder <br />
+      que atua em nós, é capaz de realizar infinitamente mais que pedimos e pensamos.“ <br /> EFÉSIOS 3:20
     </p>
   </div>
 
-  <nav class="icon-menu">
+  <nav [ngClass]="{ 'icon-menu': true, 'web': true, 'mobile': isHandset }">
     <a class="icon-item" href="/casal">
       <div class="icon-circle">
         <lucide-icon name="heart"></lucide-icon>
@@ -51,7 +50,7 @@
     </a>
   </nav>
 
-  <div class="contagem">
+  <div [ngClass]="{ 'contagem': true, 'contagem-mobile': isHandset }">
     <div class="item dia">
       <span id="dias" class="valor"></span>
       <span class="unidade">dias</span>
@@ -69,10 +68,11 @@
       <span class="unidade">segundos</span>
     </div>
   </div>
+
 </section>
 
-<div class="banner-left-inferior"></div>
-<div class="banner-right-suṕerior"></div>
+<div [ngClass]="{ 'banner': !isHandset, 'left-inferior': !isHandset }"></div>
+<div class="banner right-suṕerior"></div>
 
   <!-- Modal Igreja-->
   <div class="modal fade" id="igreja" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

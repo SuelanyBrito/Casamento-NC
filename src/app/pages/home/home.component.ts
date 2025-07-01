@@ -52,6 +52,7 @@ export class HomeComponent implements AfterViewInit {
 
       console.log('Breakpoints:', {
         result: result.breakpoints,
+        test: result.breakpoints[Breakpoints.TabletLandscape],
         isHandset: this.isHandset,
         isTablet: this.isTablet,
         isWeb: this.isWeb,
